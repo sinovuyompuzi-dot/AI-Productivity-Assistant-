@@ -60,14 +60,14 @@ export const summarizeNotes = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => NotesInput.parse(d))
   .handler(async ({ data }) => {
     try {
-      const { experimental_output } = await generateText({
+      const { output } = await generateText({
         model: getModel(),
-        experimental_output: Output.object({ schema: NotesSchema }),
+        output: Output.object({ schema: NotesSchema }),
         system:
           "You are an expert meeting analyst. Extract structured information from meeting notes. If a section has no info, return an empty array (or 'Not specified' for summary).",
         prompt: `Analyze these meeting notes and extract structured information:\n\n${data.notes}`,
       });
-      return experimental_output;
+      return output;
     } catch (e) {
       handleError(e);
     }
@@ -91,9 +91,9 @@ export const generateSchedule = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => PlannerInput.parse(d))
   .handler(async ({ data }) => {
     try {
-      const { experimental_output } = await generateText({
+      const { output } = await generateText({
         model: getModel(),
-        experimental_output: Output.object({ schema: PlannerSchema }),
+        output: Output.object({ schema: PlannerSchema }),
         system:
           "You are a productivity coach. Create a realistic, prioritized daily plan with time blocks, breaks, and actionable tips.",
         prompt: `Create a daily schedule:
@@ -103,7 +103,7 @@ export const generateSchedule = createServerFn({ method: "POST" })
 
 Return a prioritized to-do list, an hour-by-hour schedule, focused time blocks, break times, and productivity tips.`,
       });
-      return experimental_output;
+      return output;
     } catch (e) {
       handleError(e);
     }
