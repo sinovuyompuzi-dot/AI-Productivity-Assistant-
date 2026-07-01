@@ -116,8 +116,9 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
         <main className="flex-1 p-4 lg:p-8">{children}</main>
 
-        <footer className="border-t border-border bg-card/50 px-4 py-4 text-center text-xs text-muted-foreground lg:px-8">
-          ⚠️ AI-generated content may contain mistakes. Users should review all generated information before sending emails or making business decisions.
+        <footer className="border-t border-border bg-card/50 px-4 py-4 text-center text-xs text-muted-foreground lg:px-8 space-y-1">
+          <p>⚠️ AI-generated content may contain mistakes. Please review before sending emails or making business decisions.</p>
+          <p>© 2026 AI Workplace Productivity Assistant — Developed for the CAPACITI AI Skill Accelerator Programme.</p>
         </footer>
       </div>
 

@@ -15,7 +15,7 @@ function handleError(e: unknown): never {
   const msg = e instanceof Error ? e.message : String(e);
   if (msg.includes("429")) throw new Error("Rate limit exceeded. Please wait and try again.");
   if (msg.includes("402")) throw new Error("AI credits exhausted. Please add credits in your workspace billing.");
-  throw new Error(msg || "AI request failed");
+  throw new Error("Unable to generate a response at the moment. Please try again later.");
 }
 
 const EmailInput = z.object({
