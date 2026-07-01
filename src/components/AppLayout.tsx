@@ -1,13 +1,15 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Home, Mail, FileText, Calendar, Info, Moon, Sun, Menu, Sparkles } from "lucide-react";
+import { Home, Mail, FileText, Calendar, Info, Moon, Sun, Menu, Sparkles, MessageSquare, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const nav = [
   { to: "/", label: "Home", icon: Home },
+  { to: "/chat", label: "AI Chat", icon: MessageSquare },
   { to: "/email", label: "Email Generator", icon: Mail },
   { to: "/notes", label: "Notes Summarizer", icon: FileText },
   { to: "/planner", label: "Task Planner", icon: Calendar },
@@ -75,6 +77,21 @@ function Brand() {
 export function AppLayout({ children }: { children: ReactNode }) {
   const { dark, toggle } = useTheme();
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setEmail(data.user?.email ?? null));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+      setEmail(s?.user?.email ?? null);
+    });
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  async function handleSignOut() {
+    await supabase.auth.signOut();
+    navigate({ to: "/auth" });
+  }
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
@@ -109,9 +126,24 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <Brand />
             </div>
           </div>
-          <Button variant="ghost" size="icon" onClick={toggle} aria-label="Toggle theme" className="shrink-0">
-            {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
+          <div className="flex items-center gap-2">
+            {email ? (
+              <>
+                <span className="hidden sm:inline text-xs text-muted-foreground max-w-[180px] truncate">{email}</span>
+                <Button variant="ghost" size="icon" onClick={handleSignOut} aria-label="Sign out" className="shrink-0">
+                  <LogOut className="h-5 w-5" />
+                </Button>
+              </>
+            ) : (
+              <Button variant="ghost" size="sm" onClick={() => navigate({ to: "/auth" })} className="shrink-0">
+                <LogIn className="h-4 w-4 mr-1" />
+                Sign in
+              </Button>
+            )}
+            <Button variant="ghost" size="icon" onClick={toggle} aria-label="Toggle theme" className="shrink-0">
+              {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
+          </div>
         </header>
 
         <main className="flex-1 p-4 lg:p-8">{children}</main>
