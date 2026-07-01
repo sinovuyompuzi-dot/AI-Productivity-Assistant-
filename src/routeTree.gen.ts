@@ -14,6 +14,7 @@ import { Route as NotesRouteImport } from './routes/notes'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const PlannerRoute = PlannerRouteImport.update({
   id: '/planner',
@@ -40,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
   '/planner': typeof PlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
   '/planner': typeof PlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,21 @@ export interface FileRoutesById {
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
   '/planner': typeof PlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/email' | '/notes' | '/planner'
+  fullPaths: '/' | '/about' | '/email' | '/notes' | '/planner' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/email' | '/notes' | '/planner'
-  id: '__root__' | '/' | '/about' | '/email' | '/notes' | '/planner'
+  to: '/' | '/about' | '/email' | '/notes' | '/planner' | '/api/chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/email'
+    | '/notes'
+    | '/planner'
+    | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +93,7 @@ export interface RootRouteChildren {
   EmailRoute: typeof EmailRoute
   NotesRoute: typeof NotesRoute
   PlannerRoute: typeof PlannerRoute
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +133,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmailRoute: EmailRoute,
   NotesRoute: NotesRoute,
   PlannerRoute: PlannerRoute,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
