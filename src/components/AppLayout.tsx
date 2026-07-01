@@ -1,13 +1,15 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Home, Mail, FileText, Calendar, Info, Moon, Sun, Menu, Sparkles } from "lucide-react";
+import { Home, Mail, FileText, Calendar, Info, Moon, Sun, Menu, Sparkles, MessageSquare, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const nav = [
   { to: "/", label: "Home", icon: Home },
+  { to: "/chat", label: "AI Chat", icon: MessageSquare },
   { to: "/email", label: "Email Generator", icon: Mail },
   { to: "/notes", label: "Notes Summarizer", icon: FileText },
   { to: "/planner", label: "Task Planner", icon: Calendar },
