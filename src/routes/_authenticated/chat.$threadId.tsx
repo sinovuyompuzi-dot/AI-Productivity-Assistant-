@@ -124,7 +124,7 @@ function ChatWindow({
         thread_id: threadId,
         user_id: u.user.id,
         role: "user",
-        parts: [{ type: "text", text }],
+        parts: [{ type: "text", text }] as unknown as never,
       });
       await supabase
         .from("chat_threads")
@@ -191,7 +191,7 @@ async function persistMessage(threadId: string, message: UIMessage) {
     thread_id: threadId,
     user_id: u.user.id,
     role: message.role,
-    parts: message.parts,
+    parts: message.parts as unknown as never,
   });
   await supabase
     .from("chat_threads")
