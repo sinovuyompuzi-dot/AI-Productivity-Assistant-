@@ -57,6 +57,7 @@ function PlannerPage() {
         </div>
       </header>
 
+      <h2 className="sr-only">Plan Your Day</h2>
       <Card className="rounded-2xl">
         <CardHeader><CardTitle>Plan Your Day</CardTitle></CardHeader>
         <CardContent>
@@ -94,6 +95,7 @@ function PlannerPage() {
 
       {result && (
         <div className="space-y-6">
+          <h2 className="sr-only">Your generated schedule</h2>
           <Card className="rounded-2xl animate-fade-in">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">

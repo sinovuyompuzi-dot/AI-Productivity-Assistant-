@@ -83,6 +83,7 @@ function EmailPage() {
       </header>
 
       <div className="grid gap-6 lg:grid-cols-2">
+        <h2 className="sr-only">Email Details</h2>
         <Card className="rounded-2xl">
           <CardHeader>
             <CardTitle>Email Details</CardTitle>
@@ -126,6 +127,7 @@ function EmailPage() {
           </CardContent>
         </Card>
 
+        <h2 className="sr-only">Generated Email</h2>
         <Card className="rounded-2xl">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Generated Email</CardTitle>

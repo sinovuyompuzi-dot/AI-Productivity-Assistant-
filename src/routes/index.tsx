@@ -43,6 +43,7 @@ function Index() {
       </section>
 
       <section className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="sr-only">Features</h2>
         {features.map(({ to, title, desc, icon: Icon }) => (
           <Link key={to} to={to} className="group">
             <Card className="h-full rounded-2xl border-border/60 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
@@ -50,7 +51,7 @@ function Index() {
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-semibold">{title}</h3>
+                <h2 className="text-lg font-semibold">{title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
                 <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
                   Open <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

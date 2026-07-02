@@ -83,6 +83,7 @@ function NotesPage() {
         </div>
       </header>
 
+      <h2 className="sr-only">Your Meeting Notes</h2>
       <Card className="rounded-2xl">
         <CardHeader><CardTitle>Your Meeting Notes</CardTitle></CardHeader>
         <CardContent className="space-y-4">
@@ -113,6 +114,7 @@ function NotesPage() {
 
       {result && (
         <>
+          <h2 className="sr-only">Summary and insights</h2>
           <Card className="rounded-2xl animate-fade-in">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
