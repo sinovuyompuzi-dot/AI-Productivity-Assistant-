@@ -22,6 +22,12 @@ import { Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/chat/$threadId")({
+  head: () => ({
+    meta: [
+      { title: "Conversation — AI Workplace Chat" },
+      { name: "robots", content: "noindex" },
+    ],
+  }),
   component: ChatThreadPage,
 });
 

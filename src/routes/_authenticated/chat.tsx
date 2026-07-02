@@ -7,6 +7,13 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/chat")({
+  head: () => ({
+    meta: [
+      { title: "AI Chat — AI Workplace Productivity Assistant" },
+      { name: "description", content: "Chat with your AI workplace assistant across multiple conversation threads." },
+      { name: "robots", content: "noindex" },
+    ],
+  }),
   component: ChatLayout,
 });
 

@@ -24,6 +24,7 @@ function AboutPage() {
         <h1 className="text-2xl font-bold">About</h1>
       </header>
 
+      <h2 className="sr-only">What this app does</h2>
       <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> What this app does</CardTitle>
@@ -42,6 +43,7 @@ function AboutPage() {
         </CardContent>
       </Card>
 
+      <h2 className="sr-only">Responsible AI</h2>
       <Card className="rounded-2xl border-amber-500/30 bg-amber-500/5">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-400">

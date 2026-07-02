@@ -11,6 +11,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth")({
+  head: () => ({
+    meta: [
+      { title: "Sign In — AI Workplace Productivity Assistant" },
+      { name: "description", content: "Sign in or create an account to chat with your AI workplace assistant." },
+      { name: "robots", content: "noindex" },
+    ],
+  }),
   component: AuthPage,
 });
 
