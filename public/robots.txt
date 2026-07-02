@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://productivity-ai-pilot.lovable.app/sitemap.xml

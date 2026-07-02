@@ -1,0 +1,13 @@
+# AI Workplace Productivity Assistant
+
+> AI-powered assistant that helps professionals automate everyday workplace tasks — drafting emails, summarizing meeting notes, planning the workday, and chatting with an AI copilot.
+
+Built for the CAPACITI AI Skill Accelerator Programme. AI features are powered by the Lovable AI Gateway.
+
+## Pages
+
+- [Home](/): Overview of the assistant and its productivity features.
+- [Smart Email Generator](/email): Generate professional emails by recipient type, subject, purpose, and tone.
+- [Meeting Notes Summarizer](/notes): Turn raw meeting notes into summaries, key points, decisions, action items, deadlines, and responsible persons.
+- [AI Task Planner](/planner): Build a prioritized, time-blocked daily schedule from your tasks and priorities.
+- [About](/about): What the assistant does and how to use AI output responsibly.
