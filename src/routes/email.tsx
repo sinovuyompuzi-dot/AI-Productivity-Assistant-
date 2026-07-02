@@ -85,7 +85,7 @@ function EmailPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card className="rounded-2xl">
           <CardHeader>
-            <CardTitle>Email Details</CardTitle>
+            <CardTitle asChild><h2>Email Details</h2></CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={submit} className="space-y-4">
@@ -128,7 +128,7 @@ function EmailPage() {
 
         <Card className="rounded-2xl">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Generated Email</CardTitle>
+            <CardTitle asChild><h2>Generated Email</h2></CardTitle>
           </CardHeader>
           <CardContent>
             {mut.isPending ? (
