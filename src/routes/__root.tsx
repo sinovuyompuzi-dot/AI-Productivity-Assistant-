@@ -78,15 +78,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "AI Workplace Productivity Assistant" },
       { name: "description", content: "AI Productivity Hub automates workplace tasks for professionals using AI." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
+      { property: "og:title", content: "AI Workplace Productivity Assistant" },
       { property: "og:description", content: "AI Productivity Hub automates workplace tasks for professionals using AI." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "AI Workplace Productivity Assistant" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
+      { name: "twitter:title", content: "AI Workplace Productivity Assistant" },
       { name: "twitter:description", content: "AI Productivity Hub automates workplace tasks for professionals using AI." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f3a2d010-44bf-4190-a608-d582f9166b4e/id-preview-6c3e187d--47475915-927a-4f7d-9432-3e6363be5acc.lovable.app-1782821112268.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f3a2d010-44bf-4190-a608-d582f9166b4e/id-preview-6c3e187d--47475915-927a-4f7d-9432-3e6363be5acc.lovable.app-1782821112268.png" },
@@ -95,6 +96,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "AI Workplace Productivity Assistant",
+          url: "https://productivity-ai-pilot.lovable.app",
+          description:
+            "AI-powered assistant that helps professionals automate workplace tasks: drafting emails, summarizing meetings, and planning the day.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "AI Workplace Productivity Assistant",
+          url: "https://productivity-ai-pilot.lovable.app",
+          description:
+            "Developed for the CAPACITI AI Skill Accelerator Programme.",
+        }),
       },
     ],
   }),
